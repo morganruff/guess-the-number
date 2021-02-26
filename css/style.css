@@ -20,3 +20,15 @@ body {
   #resetButton {
     margin-top: 24px;
   }
+
+  .high {
+    color: #ffb04b;
+  }
+  
+  .low {
+    color:#00a7f7;
+  }
+  
+  .winner {
+    color: #98d174;
+  }

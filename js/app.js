@@ -21,7 +21,7 @@ guessBtn.addEventListener('click', function(){
     if (guessList.length === 0){
         guessesEl.innerText = 'Previous Guesses:'
     }
-    if (isWinnner === false) {
+    if (isWinner === false) {
         checkGuess(parseInt(guessInput.value));
     }
 })
@@ -79,12 +79,46 @@ function checkGuess (guess) {
     else if (guess <= secretNum) {
         messageEl.clasName = 'low';
         messageEl.innerText = `${guess} is too low, please try again`
-        guessList.push(guest);
+        guessList.push(guess);
     }
     else {
         messageEl.clasName = 'high';
         messageEl.innerText = `${guess} is too high, please try again`
-        guessList.push(guest); 
+        guessList.push(guess); 
     }
-        
+   
+    render(guess)
 }
+
+function render(guess){
+    if (guess > secretNum){
+        // use div to create document 
+        let div = document.createElement("div");
+        // append it to guesses
+        guessesEl.appendChild(div); //make child div to say high or low or something 
+        div.innerText = guess;
+        div.className = "high"
+        //copy above code to too low and equal 
+    }
+    else if (guess < secretNum) {
+         // use div to create document 
+         let div = document.createElement("div");
+         // append it to guesses
+         guessesEl.appendChild(div); //make child div to say high or low or something 
+         div.innerText = guess;
+         div.className = "low"
+    } 
+    else if (guess === secretNum) {
+         // use div to create document 
+         let div = document.createElement("div");
+         // append it to guesses
+         guessesEl.appendChild(div); //make child div to say high or low or something 
+         div.innerText = guess;
+         div.className = "equal"
+    }
+}
+/// flow should always be initialization, function that clicks/itneracts, and redner function that makes data appear 
+//use tiny bit of html do shit in js appending 
+//document.getElementbyID sotre as variables then manipulate variables by doing shit to class and id and such 
+//use in funcitons
+//wow!
